@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Agrinho - Fazenda Sustentável</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div class="container">
+        
+        <div id="tela-inicial" class="tela ativa">
+            <h1>JOGO AGRINHO - FAZENDA SUSTENTÁVEL</h1>
+            <p>Você é um(a) agricultor(a) que cuida da própria terra.</p>
+            <p>Percorra o campo tomando decisões sustentáveis:</p>
+            <p style="text-align: left; max-width: 350px; margin: 20px auto; line-height: 1.6;">
+                🌱 <b>Plantar (T)</b> em terra livre<br>
+                💧 <b>Irrigar (I)</b> em momentos de seca (economiza água)<br>
+                🌾 <b>Colher (C)</b> quando a plantação estiver pronta<br>
+                🦘 <b>Pular (P)</b> para proteger de pragas<br>
+                🏃‍♂️ <b>Avançar</b> quando o caminho estiver tranquilo
+            </p>
+            <p><i>Cuidado com a água: ela não é infinita!</i></p>
+            <button class="btn-principal" onclick="iniciarJogo()">Começar Missão</button>
+        </div>
+
+        <div id="tela-jogo" class="tela">
+            <h1>Sua Fazenda Sustentável</h1>
+            
+            <div class="status-bar">
+                <div>Progresso do Campo: <span id="txt-posicao">0</span>/12</div>
+                <div class="progress-container">
+                    <div id="barra-progresso" class="progress-bar"></div>
+                </div>
+                <div class="metrics">
+                    <div class="metric-box agua-txt">💧 Água: <span id="txt-agua">100</span>/100</div>
+                    <div class="metric-box vidas-txt">❤️ Vidas: <span id="txt-vidas">❤️❤️❤️</span></div>
+                    <div class="metric-box pontos-txt">🏆 Pontos: <span id="txt-pontos">0</span></div>
+                </div>
+            </div>
+
+            <div class="card-evento">
+                <div id="evento-titulo" class="titulo-evento">Carregando evento...</div>
+                <div id="evento-dica" class="dica-evento">Carregando dica...</div>
+                <div id="feedback-mensagem" class="mensagem-feedback"></div>
+            </div>
+
+            <div class="painel-botoes">
+                <button id="btn-P" class="btn btn-pular" onclick="jogarAcao('p')">🦘 Pular Praga (P)</button>
+                <button id="btn-I" class="btn btn-irrigar" onclick="jogarAcao('i')">💧 Irrigar Solo (I)</button>
+                <button id="btn-T" class="btn btn-plantar" onclick="jogarAcao('t')">🌱 Plantar muda (T)</button>
+                <button id="btn-C" class="btn btn-colher" onclick="jogarAcao('c')">🌾 Colher Planta (C)</button>
+                <button id="btn-Avancar" class="btn btn-avancar" onclick="jogarAcao('')">🏃‍♂️ Seguir em Frente (Enter)</button>
+            </div>
+        </div>
+
+        <div id="tela-final" class="tela">
+            <h1 id="resultado-titulo">FIM DE JOGO</h1>
+            <p id="resultado-texto">Mensagem de vitória ou derrota aqui.</p>
+            <h3 style="color: #ef6c00;">Pontuação Final de Sustentabilidade: <span id="resultado-pontos">0</span></h3>
+            <button class="btn-principal" onclick="reiniciarJogo()">Jogar Novamente</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
